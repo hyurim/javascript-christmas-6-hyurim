@@ -40,6 +40,7 @@ class ChristmasController {
   }
 
   handleChristmasResult(date, food) {
+    this.#outputView.preView(date);
     this.#outputView.printMenu(orderMenu(food));
   }
 }

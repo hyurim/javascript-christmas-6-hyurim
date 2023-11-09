@@ -21,3 +21,5 @@ const DRINK = Object.freeze({
   red_wine: { menu: "레드와인", price: 60000 },
   champagne: { menu: "샴페인", price: 25000 },
 });
+
+export { APPETIZER, MAIN, DESSERT, DRINK };
