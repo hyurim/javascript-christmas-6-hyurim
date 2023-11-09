@@ -20,7 +20,6 @@ const SYMBOLS = Object.freeze({
 });
 
 const PROMPT_IN = Object.freeze({
-  champagne: "샴페인 1개",
   d_day_discount: "크리스마스 디데이 할인: ",
   weekday_discount: "평일 할인: ",
   specials_discount: "특별 할인 ",

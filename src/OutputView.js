@@ -2,7 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 import { PROMPT } from "./constants/prompt.js";
 import messageFormat from "./constants/messageFormat.js";
 
-const { order_menu, pre_discount_total } = PROMPT;
+const { order_menu, pre_discount_total, free_menu } = PROMPT;
 
 class OutputView {
   #print(message){
@@ -13,14 +13,19 @@ class OutputView {
     this.#print(messageFormat.preview(date));
   }
 
-  printMenu(menuNames, quantities) {
+  menu(menuNames, quantities) {
     this.#print(order_menu);
     this.#print(messageFormat.menu(menuNames, quantities));
   }
 
-  preDiscountPrint(totalPrice){
+  preDiscount(totalPrice){
     this.#print(pre_discount_total);
     this.#print(messageFormat.preDiscount(totalPrice));
+  }
+
+  free(totalPrice){
+    this.#print(free_menu);
+    this.#print(messageFormat.free(totalPrice));
   }
   // ...
 }

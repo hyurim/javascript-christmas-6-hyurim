@@ -8,6 +8,7 @@ const messageFormat = {
     return formattedMenu;
   },
   preDiscount: (totalprice) => `${totalprice}원`,
+  free: (totalprice) => (totalprice < 120000 ? "없음" : "샴페인 1개"),
 };
 
 export default messageFormat;
