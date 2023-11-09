@@ -5,7 +5,7 @@ class App {
     this.christmas = new Christmas();
   }
   async run() {
-    this.christmas.input()
+    this.christmas.input();
   }
 }
 

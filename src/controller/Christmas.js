@@ -5,7 +5,8 @@ class Christmas {
     this.inputView = new InputView();
   }
   async input(){
-    const date = await this.inputView.readDate();
+    const date = await this.inputView.date();
+    const food = await this.inputView.food();
   }
 }
 
