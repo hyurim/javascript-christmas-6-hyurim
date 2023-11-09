@@ -2,9 +2,13 @@ import { Console } from "console";
 import InputView from "../InputView.js";
 import dateIsValid from "../utils/dateIsValid.js";
 import foodIsValid from "../utils/foodIsValid.js";
+import orderMenu from "../domain/orderMenu.js";
+import OutputView from "../OutputView.js";
 
 class ChristmasController {
   #inputView = new InputView();
+  #outputView = new OutputView();
+
   async dateInput() {
     return this.#handleDateInput();
   }
@@ -33,6 +37,10 @@ class ChristmasController {
       this.#handleFoodInput();
     }
     return food;
+  }
+
+  handleChristmasResult(date, food) {
+    this.#outputView.printMenu(orderMenu(food));
   }
 }
 
