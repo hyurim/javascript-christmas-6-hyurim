@@ -1,11 +1,12 @@
-import Christmas from "./controller/Christmas.js";
+import ChristmasController from "./controller/ChristmasController.js";
 
 class App {
   constructor() {
-    this.christmas = new Christmas();
+    this.christmasController = new ChristmasController();
   }
   async run() {
-    this.christmas.input();
+    const date = await this.christmasController.dateInput();
+    const food = await this.christmasController.foodInput();
   }
 }
 

@@ -9,5 +9,4 @@ const validTest = (date) => {
   }
 };
 
-
 export default dateIsValid;

@@ -4,10 +4,9 @@ const foodIsValid = (food) => {
 };
 
 const validTest = (food) => {
-  if (food.split(',').length > 20) {
+  if (food.split(",").length > 20) {
     throw new Error("[ERROR]");
   }
 };
-
 
 export default foodIsValid;
