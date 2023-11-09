@@ -4,6 +4,7 @@ import dateIsValid from "../utils/dateIsValid.js";
 import foodIsValid from "../utils/foodIsValid.js";
 import orderMenu from "../domain/orderMenu.js";
 import OutputView from "../OutputView.js";
+import preDiscountAmount from "../domain/preDiscountAmount.js";
 
 class ChristmasController {
   #inputView = new InputView();
@@ -40,8 +41,10 @@ class ChristmasController {
   }
 
   handleChristmasResult(date, food) {
+    const { menuNames, quantities } = orderMenu(food);
     this.#outputView.preView(date);
-    this.#outputView.printMenu(orderMenu(food));
+    this.#outputView.printMenu(menuNames, quantities);
+    this.#outputView.preDiscountPrint(preDiscountAmount(menuNames, quantities));
   }
 }
 
