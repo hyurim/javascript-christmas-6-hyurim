@@ -48,11 +48,10 @@ npm i @woowacourse/mission-utils
 12. 도메인 로직에 단위 테스트를 구현합니다. 단, UI(`Console.readLineAsync`, `Console.print`) 로직에 대한 단위 테스트는 제외해야 합니다.
 13. `@woowacourse/mission-utils`에서 제공하는 `Random` 및 `Console` API를 사용하여 구현해야 합니다.
 14. 제공되는 `InputView`, `OutputView` 객체를 활용해 구현합니다.
-
-- 입력과 출력을 담당하는 객체를 별도로 구현한다.
-- InputView, OutputView의 파일 경로는 변경할 수 있다.
-- InputView, OutputView의 메서드의 이름과 인자는 필요에 따라 추가하거나 변경할 수 있다.
-- 값 출력을 위해 필요한 메서드를 추가할 수 있다.
+  - 입력과 출력을 담당하는 객체를 별도로 구현한다.
+  - InputView, OutputView의 파일 경로는 변경할 수 있다.
+  - InputView, OutputView의 메서드의 이름과 인자는 필요에 따라 추가하거나 변경할 수 있다.
+  - 값 출력을 위해 필요한 메서드를 추가할 수 있다.
 
 ### 라이브러리
 
