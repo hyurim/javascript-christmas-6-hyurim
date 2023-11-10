@@ -21,7 +21,7 @@ class Discount {
       totalPrice,
       day
     );
-    return discounts;
+    return discounts !== undefined ? discounts : [];
   }
 
   #getDayOfWeek(date) {

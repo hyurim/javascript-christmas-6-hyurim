@@ -53,7 +53,6 @@ class ChristmasController {
     const totalPrice = preDiscountAmount(menu.menuNames, menu.quantities);
     const discount = this.#discount.discountPrice(menu, date, totalPrice);
     const totalDiscount = discount.map((cost) => cost.amount);
-
     OutputView.preView(date);
     OutputView.menu(menu.menuNames, menu.quantities);
     OutputView.preDiscount(totalPrice);

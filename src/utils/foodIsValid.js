@@ -21,7 +21,7 @@ const validateMultipleOrders = (orders) => {
 };
 
 const validateOrderFormat = (order) => {
-  const regex = /^[가-힣a-zA-Z\s]+-\d+$/;
+  const regex = /^[가-힣]+\-\d+$/;
   if (!regex.test(order)) {
     throw new Error(ERROR.invalid_order_error_message);
   }
