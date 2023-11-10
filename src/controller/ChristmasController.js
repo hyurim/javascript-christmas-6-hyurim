@@ -6,12 +6,16 @@ import orderMenu from "../domain/orderMenu.js";
 import OutputView from "../OutputView.js";
 import preDiscountAmount from "../domain/preDiscountAmount.js";
 import Discount from "../domain/Discount.js";
+import benefit from "../domain/benefit.js";
 
 class ChristmasController {
-  #outputView = new OutputView();
   #discount = new Discount();
 
-  #print(message){
+  constructor() {
+    OutputView.start();
+  }
+
+  #print(message) {
     Console.print(message);
   }
 
@@ -48,11 +52,12 @@ class ChristmasController {
   handleChristmasResult(date, food) {
     const { menuNames, quantities } = orderMenu(food);
     const totalPrice = preDiscountAmount(menuNames, quantities);
-    this.#outputView.preView(date);
-    this.#outputView.menu(menuNames, quantities);
-    this.#outputView.preDiscount(totalPrice);
-    this.#outputView.free(totalPrice);
-    this.#discount(menuNames, date);
+    const discount = this.#discount.discountPrice(menuNames, date, totalPrice);
+    OutputView.preView(date);
+    OutputView.menu(menuNames, quantities);
+    OutputView.preDiscount(totalPrice);
+    OutputView.free(totalPrice);
+    OutputView.benefit(discount);
   }
 }
 

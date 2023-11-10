@@ -14,7 +14,7 @@ const preDiscountAmount = (menuNames, quantities) => {
     return total + food.price * food.quantity;
   }, 0);
 
-  return totalAmount.toLocaleString();
+  return totalAmount;
 };
 
 export default preDiscountAmount;

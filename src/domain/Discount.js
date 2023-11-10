@@ -1,9 +1,11 @@
 import { DESSERT_MENU, MAIN_MENU } from "../constants/menu.js";
-import { DAY, DISCOUNT } from "../constants/numbers.js";
+import { DAY, DISCOUNT, NUMBERS } from "../constants/numbers.js";
+import benefit from "./benefit.js";
 
 const { discount_price, special_discount, basis, day_discount, day_basis } =
   DISCOUNT;
-const { dayOfWeek, week, christmas, sunday } = DAY;
+const { christmas, sunday } = DAY;
+const { year, month, zero, discount_start } = NUMBERS;
 /**
  * 크리스마스 디데이 할인: -1,200원
 평일 할인: -4,046원
@@ -11,32 +13,45 @@ const { dayOfWeek, week, christmas, sunday } = DAY;
 증정 이벤트: -25,000원
  */
 class Discount {
-  discountPrice(menu, date) {
+  discountPrice(menu, date, totalPrice) {
     const day = this.#getDayOfWeek(date);
-    const christmas = this.#ChristmasDay(date);
-    const special = this.#specialDiscount(day, date);
+    const christmas = this.#ChristmasDday(date);
     const week =
       day <= 5 ? this.#week(menu, DESSERT_MENU) : this.#week(menu, MAIN_MENU);
-    return { christmas, special, week };
+    const special = this.#special(day, date);
+    const discounts = this.#eachDiscount(
+      christmas,
+      week,
+      special,
+      totalPrice,
+      day
+    );
+    return discounts;
   }
 
   #getDayOfWeek(date) {
-    const day = (date + dayOfWeek) % week;
-    return day;
+    const day = new Date(year, month, date);
+    return day.getDay();
   }
-  #ChristmasDay(date) {
-    return -((date - day_basis) * day_discount + basis);
+  #ChristmasDday(date) {
+    if (date <= christmas) {
+      return -((date - day_basis) * day_discount + basis);
+    }
+    return zero;
   }
   #week(menu, targetMenu) {
-    const piece = this.#countMatchingMenu(menu, targetMenu);
+    const piece = menu.filter((food) => targetMenu.includes(food)).length;
     return -(piece * discount_price);
   }
-  #countMatchingMenu(menu, targetMenu) {
-    return menu.filter((food) => targetMenu.includes(food)).length;
-  }
-  #specialDiscount(day, date) {
+  #special(day, date) {
     if (day === sunday || date === christmas) {
       return special_discount;
+    }
+    return zero;
+  }
+  #eachDiscount(christmas, week, special, totalPrice, day) {
+    if (totalPrice >= discount_start) {
+      return benefit(christmas, week, special, totalPrice, day);
     }
   }
 }

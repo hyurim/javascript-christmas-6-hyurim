@@ -7,8 +7,16 @@ const messageFormat = {
       .join("\n");
     return formattedMenu;
   },
-  preDiscount: (totalprice) => `${totalprice}원`,
+  preDiscount: (totalprice) => `${totalprice.toLocaleString()}원`,
   free: (totalprice) => (totalprice < 120000 ? "없음" : "샴페인 1개"),
+  benefit: (discount) => {
+    if(discount.length !== 0){
+      const benefitPrint = discount.map((item) => `${item.type}: ${item.amount}원`).join("\n");
+      return benefitPrint;
+    }
+    return "없음";
+  }
+
 };
 
 export default messageFormat;
