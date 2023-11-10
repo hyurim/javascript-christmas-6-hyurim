@@ -1,4 +1,4 @@
-import MENU from "../constants/menu.js";
+import { MENU } from "../constants/menu.js";
 
 const preDiscountAmount = (menuNames, quantities) => {
   const orderedFoods = menuNames.map((menu, index) => {

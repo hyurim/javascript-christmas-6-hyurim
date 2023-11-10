@@ -13,4 +13,13 @@ const MENU = Object.freeze([
   { menu: "샴페인", price: 25000 },
 ]);
 
-export default MENU;
+const MAIN_MENU = Object.freeze([
+  "티본스테이크",
+  "바비큐립",
+  "해산물파스타",
+  "크리스마스파스타",
+]);
+
+const DESSERT_MENU = Object.freeze(["초코케이크", "아이스크림"]);
+
+export { MENU, MAIN_MENU, DESSERT_MENU };

@@ -5,6 +5,7 @@ import foodIsValid from "../utils/foodIsValid.js";
 import orderMenu from "../domain/orderMenu.js";
 import OutputView from "../OutputView.js";
 import preDiscountAmount from "../domain/preDiscountAmount.js";
+import discount from "../domain/discount.js";
 
 class ChristmasController {
   #inputView = new InputView();
@@ -51,6 +52,7 @@ class ChristmasController {
     this.#outputView.menu(menuNames, quantities);
     this.#outputView.preDiscount(totalPrice);
     this.#outputView.free(totalPrice);
+    discount(menuNames, date, totalPrice);
   }
 }
 
