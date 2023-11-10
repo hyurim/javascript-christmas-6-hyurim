@@ -27,10 +27,10 @@ const PROMPT_IN = Object.freeze({
   gift_event: "증정 이벤트: ",
 });
 
-const BADGE = Object.freeze({
-  star: "별",
-  tree: "트리",
-  santa: "산타",
-});
+const BADGE = Object.freeze([
+  { limit: 20000, badge: "산타" },
+  { limit: 10000, badge: "트리" },
+  { limit: 5000, badge: "별" },
+]);
 
 export { PROMPT, SYMBOLS, PROMPT_IN, BADGE };

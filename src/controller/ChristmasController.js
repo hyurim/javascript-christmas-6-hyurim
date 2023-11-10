@@ -50,9 +50,7 @@ class ChristmasController {
   }
 
   handleChristmasResult(date, food) {
-    // const { menuNames, quantities } = orderMenu(food);
     const menu = orderMenu(food);
-    console.log(menu);
     const totalPrice = preDiscountAmount(menu.menuNames, menu.quantities);
     const discount = this.#discount.discountPrice(menu, date, totalPrice);
     const totalDiscount = discount.map((cost) => cost.amount);
@@ -63,6 +61,8 @@ class ChristmasController {
     OutputView.free(totalPrice);
     OutputView.benefit(discount);
     OutputView.totalBenefit(totalDiscount);
+    OutputView.discountedAmount(totalPrice, totalDiscount);
+    OutputView.badge(totalDiscount);
   }
 }
 
