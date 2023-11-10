@@ -22,4 +22,6 @@ const MAIN_MENU = Object.freeze([
 
 const DESSERT_MENU = Object.freeze(["초코케이크", "아이스크림"]);
 
-export { MENU, MAIN_MENU, DESSERT_MENU };
+const DRINK_MENU = Object.freeze(["제로콜라", "레드와인", "샴페인"]);
+
+export { MENU, MAIN_MENU, DESSERT_MENU, DRINK_MENU };

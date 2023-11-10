@@ -1,4 +1,4 @@
-# Christmas - 크리스마스 프모ㄴ
+# Christmas - 크리스마스 프로모션
 
 ### Table of Contests
 

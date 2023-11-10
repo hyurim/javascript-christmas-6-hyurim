@@ -9,9 +9,9 @@ const PROMPT = Object.freeze({
   pre_discount_total: "\n<할인 전 총주문 금액>",
   free_menu: "\n<증정 메뉴>",
   benefit_detail: "\n<혜택 내역>",
-  total_benefit_detail: "\n<총 혜택 내역>",
+  total_benefit_detail: "\n<총혜택 금액>",
   discounted_amount: "\n<할인 후 예상 결제 금액>",
-  event_badge: "\n<12월 이벤트 배지>,",
+  event_badge: "\n<12월 이벤트 배지>",
 });
 
 const SYMBOLS = Object.freeze({

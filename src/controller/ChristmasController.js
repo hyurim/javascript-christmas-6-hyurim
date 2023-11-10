@@ -1,4 +1,4 @@
-import { Console } from "console";
+import { Console } from "@woowacourse/mission-utils";
 import InputView from "../InputView.js";
 import dateIsValid from "../utils/dateIsValid.js";
 import foodIsValid from "../utils/foodIsValid.js";
@@ -6,7 +6,6 @@ import orderMenu from "../domain/orderMenu.js";
 import OutputView from "../OutputView.js";
 import preDiscountAmount from "../domain/preDiscountAmount.js";
 import Discount from "../domain/Discount.js";
-import benefit from "../domain/benefit.js";
 
 class ChristmasController {
   #discount = new Discount();
@@ -29,7 +28,7 @@ class ChristmasController {
       dateIsValid(date);
     } catch (error) {
       this.#print(error.message);
-      this.#handleDateInput();
+      await this.#handleDateInput();
     }
     return date;
   }
@@ -44,7 +43,7 @@ class ChristmasController {
       foodIsValid(food);
     } catch (error) {
       this.#print(error.message);
-      this.#handleFoodInput();
+      await this.#handleFoodInput();
     }
     return food;
   }
