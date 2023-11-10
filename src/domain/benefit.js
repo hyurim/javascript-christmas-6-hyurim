@@ -28,7 +28,7 @@ const christmasBenefit = (christmas) => {
   }
 };
 const weekBenefit = (weekday, day) => {
-  if (day <= weekend_start) {
+  if (day >= weekend_start) {
     return { type: weekend_discount, amount: weekday };
   }
   return { type: weekday_discount, amount: weekday };

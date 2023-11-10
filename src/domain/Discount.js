@@ -40,7 +40,12 @@ class Discount {
     return zero;
   }
   #week(menu, targetMenu) {
-    const piece = menu.filter((food) => targetMenu.includes(food)).length;
+    const piece = menu.menuNames.reduce((acc, food, index) => {
+      if (targetMenu.includes(food)) {
+        acc += parseInt(menu.quantities[index], 10);
+      }
+      return acc;
+    }, 0);
     return -(piece * discount_price);
   }
   #special(day, date) {

@@ -50,14 +50,19 @@ class ChristmasController {
   }
 
   handleChristmasResult(date, food) {
-    const { menuNames, quantities } = orderMenu(food);
-    const totalPrice = preDiscountAmount(menuNames, quantities);
-    const discount = this.#discount.discountPrice(menuNames, date, totalPrice);
+    // const { menuNames, quantities } = orderMenu(food);
+    const menu = orderMenu(food);
+    console.log(menu);
+    const totalPrice = preDiscountAmount(menu.menuNames, menu.quantities);
+    const discount = this.#discount.discountPrice(menu, date, totalPrice);
+    const totalDiscount = discount.map((cost) => cost.amount);
+
     OutputView.preView(date);
-    OutputView.menu(menuNames, quantities);
+    OutputView.menu(menu.menuNames, menu.quantities);
     OutputView.preDiscount(totalPrice);
     OutputView.free(totalPrice);
     OutputView.benefit(discount);
+    OutputView.totalBenefit(totalDiscount);
   }
 }
 
