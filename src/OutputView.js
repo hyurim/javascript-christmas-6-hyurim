@@ -2,32 +2,37 @@ import { Console } from "@woowacourse/mission-utils";
 import { PROMPT } from "./constants/prompt.js";
 import messageFormat from "./constants/messageFormat.js";
 
-const { order_menu, pre_discount_total, free_menu } = PROMPT;
+const { start, order_menu, pre_discount_total, free_menu } = PROMPT;
+const { preview, menu, preDiscount, free } = messageFormat;
 
-class OutputView {
-  #print(message){
+const OutputView = {
+  print(message) {
     Console.print(message);
-  }
+  },
+
+  start() {
+    this.print(start);
+  },
 
   preView(date) {
-    this.#print(messageFormat.preview(date));
-  }
+    this.print(preview(date));
+  },
 
   menu(menuNames, quantities) {
-    this.#print(order_menu);
-    this.#print(messageFormat.menu(menuNames, quantities));
-  }
+    this.print(order_menu);
+    this.print(menu(menuNames, quantities));
+  },
 
-  preDiscount(totalPrice){
-    this.#print(pre_discount_total);
-    this.#print(messageFormat.preDiscount(totalPrice));
-  }
+  preDiscount(totalPrice) {
+    this.print(pre_discount_total);
+    this.print(preDiscount(totalPrice));
+  },
 
-  free(totalPrice){
-    this.#print(free_menu);
-    this.#print(messageFormat.free(totalPrice));
-  }
+  free(totalPrice) {
+    this.print(free_menu);
+    this.print(free(totalPrice));
+  },
   // ...
-}
+};
 
 export default OutputView;

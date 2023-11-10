@@ -5,11 +5,11 @@ import foodIsValid from "../utils/foodIsValid.js";
 import orderMenu from "../domain/orderMenu.js";
 import OutputView from "../OutputView.js";
 import preDiscountAmount from "../domain/preDiscountAmount.js";
-import discount from "../domain/discount.js";
+import Discount from "../domain/Discount.js";
 
 class ChristmasController {
-  #inputView = new InputView();
   #outputView = new OutputView();
+  #discount = new Discount();
 
   #print(message){
     Console.print(message);
@@ -21,7 +21,7 @@ class ChristmasController {
   async #handleDateInput() {
     let date;
     try {
-      date = await this.#inputView.date();
+      date = await InputView.date();
       dateIsValid(date);
     } catch (error) {
       this.#print(error.message);
@@ -36,7 +36,7 @@ class ChristmasController {
   async #handleFoodInput() {
     let food;
     try {
-      food = await this.#inputView.food();
+      food = await InputView.food();
       foodIsValid(food);
     } catch (error) {
       this.#print(error.message);
@@ -52,7 +52,7 @@ class ChristmasController {
     this.#outputView.menu(menuNames, quantities);
     this.#outputView.preDiscount(totalPrice);
     this.#outputView.free(totalPrice);
-    discount(menuNames, date, totalPrice);
+    this.#discount(menuNames, date);
   }
 }
 
