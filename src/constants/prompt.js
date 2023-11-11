@@ -23,7 +23,7 @@ const PROMPT_IN = Object.freeze({
   d_day_discount: "크리스마스 디데이 할인: ",
   weekday_discount: "평일 할인: ",
   weekend_discount: "주말 할인: ",
-  specials_discount: "특별 할인 ",
+  specials_discount: "특별 할인: ",
   gift_event: "증정 이벤트: ",
 });
 

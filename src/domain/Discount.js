@@ -45,7 +45,7 @@ class Discount {
   }
   #special(day, date) {
     if (day === sunday || date === christmas) {
-      return special_discount;
+      return -special_discount;
     }
     return zero;
   }

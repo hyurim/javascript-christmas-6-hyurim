@@ -5,6 +5,7 @@ import { NUMBERS } from "../constants/numbers.js";
 const foodIsValid = (order) => {
   const menuNames = order.match(/[^\d,-]+/g);
   const quantities = order.match(/\d+/g);
+
   validateMultipleOrders(order);
   validateDuplication(menuNames);
   validateOnlyDrink(menuNames);
@@ -71,7 +72,3 @@ const validateOrderQuantity = (quantities) => {
   }
 };
 export default foodIsValid;
-
-// console.log(menu); 해산물파스타-2,레드와인-1,초코케이크-1
-// console.log(menuNames); [ '해산물파스타', '레드와인', '초코케이크' ]
-// console.log(quantities); [ '2', '1', '1' ]

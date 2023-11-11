@@ -7,7 +7,7 @@ class App {
   async run() {
     const date = await this.christmasController.dateInput();
     const food = await this.christmasController.foodInput();
-    this.christmasController.handleChristmasResult(date, food);
+    this.christmasController.handleChristmasLogic(date, food);
   }
 }
 

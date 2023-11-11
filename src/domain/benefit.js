@@ -19,6 +19,7 @@ const benefit = (christmas, week, special, totalPrice, day) => {
   discounts.push(weekDiscountInfo);
   discounts.push(specialDiscountInfo);
   discounts.push(giftDiscountInfo);
+
   return discounts.filter((value) => value !== undefined);
 };
 

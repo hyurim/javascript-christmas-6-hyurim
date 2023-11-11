@@ -6,6 +6,7 @@ import orderMenu from "../domain/orderMenu.js";
 import OutputView from "../OutputView.js";
 import preDiscountAmount from "../domain/preDiscountAmount.js";
 import Discount from "../domain/Discount.js";
+import totalDiscount from "../domain/totalDiscount.js";
 
 class ChristmasController {
   #discount = new Discount();
@@ -22,45 +23,52 @@ class ChristmasController {
     return this.#handleDateInput();
   }
   async #handleDateInput() {
-    let date;
     try {
-      date = await InputView.date();
+      const date = await InputView.date();
       dateIsValid(date);
+      return date;
     } catch (error) {
       this.#print(error.message);
-      await this.#handleDateInput();
+      return this.#handleDateInput();
     }
-    return date;
   }
 
   async foodInput() {
     return this.#handleFoodInput();
   }
   async #handleFoodInput() {
-    let food;
     try {
-      food = await InputView.food();
+      const food = await InputView.food();
       foodIsValid(food);
+      return food;
     } catch (error) {
       this.#print(error.message);
-      await this.#handleFoodInput();
+      return this.#handleFoodInput();
     }
-    return food;
   }
 
-  handleChristmasResult(date, food) {
+  handleChristmasLogic(date, food) {
     const menu = orderMenu(food);
     const totalPrice = preDiscountAmount(menu.menuNames, menu.quantities);
     const discount = this.#discount.discountPrice(menu, date, totalPrice);
-    const totalDiscount = discount.map((cost) => cost.amount);
+    const totalDiscountPrice = totalDiscount(discount);
+    this.#handleChristmasOutput(
+      date,
+      menu,
+      totalPrice,
+      discount,
+      totalDiscountPrice
+    );
+  }
+  #handleChristmasOutput(date, menu, totalPrice, discount, totalDiscountPrice) {
     OutputView.preView(date);
     OutputView.menu(menu.menuNames, menu.quantities);
     OutputView.preDiscount(totalPrice);
     OutputView.free(totalPrice);
     OutputView.benefit(discount);
-    OutputView.totalBenefit(totalDiscount);
-    OutputView.discountedAmount(totalPrice, totalDiscount);
-    OutputView.badge(totalDiscount);
+    OutputView.totalBenefit(totalDiscountPrice);
+    OutputView.discountedAmount(totalPrice, totalDiscountPrice);
+    OutputView.badge(totalDiscountPrice);
   }
 }
 
