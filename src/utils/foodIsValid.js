@@ -10,13 +10,13 @@ const { zero, menu_limit } = NUMBERS;
 const foodIsValid = (order) => {
   const menuNames = order.match(/[^\d,-]+/g);
   const quantities = order.match(/\d+/g);
-
   validateMultipleOrders(order);
   validateDuplication(menuNames);
   validateOnlyDrink(menuNames);
   validateMenu(menuNames);
   validateOrderQuantity(quantities);
   validateNumbers(quantities);
+  validateZeroInclude(quantities);
   return true;
 };
 
@@ -75,9 +75,12 @@ const validateOrderQuantity = (quantities) => {
   if (quantity > menu_limit) {
     throw new InputError(ERROR.invalid_order_error_message);
   }
-  if (quantity === zero) {
+};
+
+const validateZeroInclude = (quantities) => {
+  if (quantities.includes(`${zero}`)){
     throw new InputError(ERROR.invalid_order_error_message);
   }
-};
+}
 
 export default foodIsValid;
