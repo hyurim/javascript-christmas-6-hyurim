@@ -75,5 +75,9 @@ const validateOrderQuantity = (quantities) => {
   if (quantity > menu_limit) {
     throw new InputError(ERROR.invalid_order_error_message);
   }
+  if (quantity === zero) {
+    throw new InputError(ERROR.invalid_order_error_message);
+  }
 };
+
 export default foodIsValid;
