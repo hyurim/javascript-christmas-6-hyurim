@@ -1,11 +1,10 @@
 import { NUMBERS } from "./numbers.js";
-import { BADGE } from "./prompt.js";
 
 const { zero, presentAmount, champagne } = NUMBERS;
 
 const messageFormat = {
   preview: (date) =>
-    `12월 ${date}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!`, // V
+    `12월 ${date}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!`,
 
   menu: (menuNames, quantities) => {
     const formattedMenu = menuNames
@@ -18,8 +17,8 @@ const messageFormat = {
     return formattedMenu;
   },
 
-  preDiscount: (totalprice) => `${totalprice.toLocaleString()}원`, // V
-  free: (totalprice) => (totalprice < presentAmount ? "없음" : "샴페인 1개"), // V
+  preDiscount: (totalprice) => `${totalprice.toLocaleString()}원`,
+  free: (totalprice) => (totalprice < presentAmount ? "없음" : "샴페인 1개"),
 
   benefit: (discount) => {
     if (discount.length !== zero) {
@@ -38,12 +37,7 @@ const messageFormat = {
       ? `${(totalPrice + totalDiscount + champagne).toLocaleString()}원`
       : `${(totalPrice + totalDiscount).toLocaleString()}원`,
 
-  badge: (totalDiscountPrice) => {
-    const selectedBadge = BADGE.find(
-      (select) => totalDiscountPrice >= select.limit
-    );
-    return selectedBadge ? selectedBadge.badge : "없음";
-  },
+  badge: (selectedBadge) => (selectedBadge ? selectedBadge.badge : "없음"),
 };
 
 export default messageFormat;

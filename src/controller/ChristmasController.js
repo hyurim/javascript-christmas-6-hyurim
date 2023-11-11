@@ -7,6 +7,7 @@ import OutputView from "../OutputView.js";
 import preDiscountAmount from "../domain/preDiscountAmount.js";
 import Discount from "../domain/Discount.js";
 import totalDiscount from "../domain/totalDiscount.js";
+import badge from "../domain/badge.js"
 
 class ChristmasController {
   #discount = new Discount();
@@ -52,15 +53,16 @@ class ChristmasController {
     const totalPrice = preDiscountAmount(menu.menuNames, menu.quantities);
     const discount = this.#discount.discountPrice(menu, date, totalPrice);
     const totalDiscountPrice = totalDiscount(discount);
+    const selectedBadge = badge(totalDiscountPrice);
     this.#handleChristmasOutput(
       date,
       menu,
       totalPrice,
       discount,
-      totalDiscountPrice
+      totalDiscountPrice, selectedBadge
     );
   }
-  #handleChristmasOutput(date, menu, totalPrice, discount, totalDiscountPrice) {
+  #handleChristmasOutput(date, menu, totalPrice, discount, totalDiscountPrice, selectedBadge) {
     OutputView.preView(date);
     OutputView.menu(menu.menuNames, menu.quantities);
     OutputView.preDiscount(totalPrice);
@@ -68,7 +70,7 @@ class ChristmasController {
     OutputView.benefit(discount);
     OutputView.totalBenefit(totalDiscountPrice);
     OutputView.discountedAmount(totalPrice, totalDiscountPrice);
-    OutputView.badge(totalDiscountPrice);
+    OutputView.badge(selectedBadge);
   }
 }
 
