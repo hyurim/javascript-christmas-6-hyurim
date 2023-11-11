@@ -25,7 +25,7 @@ const messageFormat = {
   benefit: (discount) => {
     if (discount.length !== zero) {
       const benefitPrint = discount
-        .map((item) => `${item.type}${item.amount}원`)
+        .map((item) => `${item.type}${item.amount.toLocaleString()}원`)
         .join("\n");
       return benefitPrint;
     }
@@ -39,7 +39,8 @@ const messageFormat = {
       ? `${(totalPrice + totalDiscount + champagne).toLocaleString()}원`
       : `${(totalPrice + totalDiscount).toLocaleString()}원`,
 
-  badge: (selectedBadge) => (selectedBadge ? selectedBadge.badge : "없음"),
+  badge: (selectedBadge) =>
+    selectedBadge && selectedBadge.badge ? selectedBadge.badge : "없음",
 };
 
 export default messageFormat;
