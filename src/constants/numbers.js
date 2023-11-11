@@ -17,6 +17,7 @@ const NUMBERS = {
   zero: 0,
   weekend_start: 5,
   discount_start: 10000,
+  presentAmount: 120000,
   champagne: 25000,
 };
 export { DISCOUNT, DAY, NUMBERS };
