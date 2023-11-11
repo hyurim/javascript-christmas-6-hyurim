@@ -2,13 +2,23 @@ import dateIsValid from "../../src/utils/dateIsValid.js";
 import ERROR from "../../src/constants/error.js";
 
 const { prefix, invalid_date_error_message } = ERROR;
+const expectInValidDateError = (input) => {
+  expect(() => dateIsValid(input)).toThrow(
+    `${prefix} ${invalid_date_error_message}`
+  );
+};
 describe("날짜 입력 테스트", () => {
-  test("숫자 이외의 값을 입력한 경우", async () => {
-    const input = "aa";
-    expect(() => dateIsValid(input)).toThrow(
-      `${prefix} ${invalid_date_error_message}`
-    );
+  test("정상 입력", async () => {
+    const input = "25";
+    expect(() => dateIsValid(input)).not.toThrow();
   });
+
+  test.each([["one"], ["ten"], ["five"], ["christmas"], ["twenty"], ["today"]])(
+    "숫자 이외의 값이 입력된 경우",
+    (input) => {
+      expectInValidDateError(input);
+    }
+  );
   test.each([
     ["-1"],
     ["1106"],
@@ -17,9 +27,7 @@ describe("날짜 입력 테스트", () => {
     [`${Math.PI}`],
     ["10.06"],
   ])("날짜 이외의 정수가 입력된 경우", (input) => {
-    expect(() => dateIsValid(input)).toThrow(
-      `${prefix} ${invalid_date_error_message}`
-    );
+    expectInValidDateError(input);
   });
   test.each([
     ["1a1"],
@@ -32,8 +40,6 @@ describe("날짜 입력 테스트", () => {
     ["2 5"],
     ["25 "],
   ])("공백 및 문자가 입력된 경우", (input) => {
-    expect(() => dateIsValid(input)).toThrow(
-      `${prefix} ${invalid_date_error_message}`
-    );
+    expectInValidDateError(input);
   });
 });
