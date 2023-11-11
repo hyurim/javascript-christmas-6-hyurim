@@ -15,6 +15,7 @@ const NUMBERS = {
   year: 2023,
   month: 11,
   zero: 0,
+  menu_limit: 20,
   weekend_start: 5,
   discount_start: 10000,
   presentAmount: 120000,

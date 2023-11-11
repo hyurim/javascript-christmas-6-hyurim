@@ -33,6 +33,10 @@ const OutputView = {
     this.print(start);
   },
 
+  errorPrint(message) {
+    this.print(message);
+  },
+
   preView(date) {
     this.print(preview(date));
   },

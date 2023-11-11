@@ -17,6 +17,12 @@ const PROMPT = Object.freeze({
 const SYMBOLS = Object.freeze({
   won: "원",
   piece: "개",
+  space: " ",
+  comma: ",",
+  space_and_comma: ", ",
+  dot: ".",
+  newline: "\n",
+  blank: "",
 });
 
 const PROMPT_IN = Object.freeze({

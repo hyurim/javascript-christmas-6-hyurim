@@ -16,10 +16,6 @@ class ChristmasController {
     OutputView.start();
   }
 
-  #print(message) {
-    Console.print(message);
-  }
-
   async dateInput() {
     return this.#handleDateInput();
   }
@@ -29,7 +25,7 @@ class ChristmasController {
       dateIsValid(date);
       return date;
     } catch (error) {
-      this.#print(error.message);
+      OutputView.errorPrint(error.message);
       return this.#handleDateInput();
     }
   }
@@ -43,7 +39,7 @@ class ChristmasController {
       foodIsValid(food);
       return food;
     } catch (error) {
-      this.#print(error.message);
+      OutputView.errorPrint(error.message);
       return this.#handleFoodInput();
     }
   }
@@ -62,6 +58,7 @@ class ChristmasController {
       totalDiscountPrice, selectedBadge
     );
   }
+
   #handleChristmasOutput(date, menu, totalPrice, discount, totalDiscountPrice, selectedBadge) {
     OutputView.preView(date);
     OutputView.menu(menu.menuNames, menu.quantities);

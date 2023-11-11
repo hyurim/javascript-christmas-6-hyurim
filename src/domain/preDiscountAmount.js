@@ -1,4 +1,7 @@
 import { MENU } from "../constants/menu.js";
+import { NUMBERS } from "../constants/numbers.js";
+
+const { zero } = NUMBERS;
 
 const preDiscountAmount = (menuNames, quantities) => {
   const orderedFoods = menuNames.map((menu, index) => {
@@ -6,8 +9,8 @@ const preDiscountAmount = (menuNames, quantities) => {
     const quantity =
       quantities && quantities[index] !== null
         ? parseInt(quantities[index], 10)
-        : 0;
-    const price = menuItem ? menuItem.price : 0;
+        : zero;
+    const price = menuItem ? menuItem.price : zero;
     return {
       menu,
       quantity,
@@ -17,7 +20,7 @@ const preDiscountAmount = (menuNames, quantities) => {
 
   const totalAmount = orderedFoods.reduce((total, food) => {
     return total + food.price * food.quantity;
-  }, 0);
+  }, zero);
   return totalAmount;
 };
 
