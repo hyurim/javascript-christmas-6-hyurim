@@ -44,7 +44,7 @@ class Discount {
     return -(piece * discount_price);
   }
   #special(day, date) {
-    if (day === sunday || date === christmas) {
+    if (day === sunday || Number(date) === christmas) {
       return -special_discount;
     }
     return zero;
