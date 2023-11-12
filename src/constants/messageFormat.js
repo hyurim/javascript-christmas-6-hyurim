@@ -13,7 +13,7 @@ const messageFormat = {
   menu: (menuNames, quantities) =>
     menuNames
       .map((name, index) => {
-        const quantity = quantities && quantities[index] !== null ? quantities[index] : "0";
+        const quantity = quantities ? quantities[index] : "0";
         return `${name} ${quantity}개`;
       })
       .join(LINE_SEPARATOR),

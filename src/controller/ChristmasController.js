@@ -44,23 +44,12 @@ class ChristmasController {
   }
 
   handleChristmasLogic(date, food) {
+    OutputView.preView(date);
     const menu = orderMenu(food);
     const totalPrice = preDiscountAmount(menu.menuNames, menu.quantities);
     const discount = this.#discount.discountPrice(menu, date, totalPrice);
-    const totalDiscountPrice = totalDiscount(discount);
-    const selectedBadge = badge(totalDiscountPrice);
-    this.#handleChristmasOutput(date, menu, totalPrice, discount, totalDiscountPrice, selectedBadge);
-  }
-
-  #handleChristmasOutput(date, menu, totalPrice, discount, totalDiscountPrice, selectedBadge) {
-    OutputView.preView(date);
-    OutputView.menu(menu.menuNames, menu.quantities);
-    OutputView.preDiscount(totalPrice);
-    OutputView.free(totalPrice);
-    OutputView.benefit(discount);
-    OutputView.totalBenefit(totalDiscountPrice);
-    OutputView.discountedAmount(totalPrice, totalDiscountPrice);
-    OutputView.badge(selectedBadge);
+    const totalDiscountPrice = totalDiscount(totalPrice, discount);
+    badge(totalDiscountPrice);
   }
 }
 

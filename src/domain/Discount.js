@@ -1,5 +1,6 @@
 import { DESSERT_MENU, MAIN_MENU } from "../constants/menu.js";
 import { DAY, DISCOUNT, NUMBERS } from "../constants/numbers.js";
+import OutputView from "../OutputView.js";
 import benefit from "./benefit.js";
 
 const { discount_price, special_discount, basis, day_discount, day_basis } =
@@ -14,7 +15,11 @@ class Discount {
     const week = day <= 5 ? this.#week(menu, DESSERT_MENU) : this.#week(menu, MAIN_MENU);
     const special = this.#special(day, date);
     const discounts = this.#eachDiscount(christmas, week, special, totalPrice, day);
-    return discounts !== undefined ? discounts : [];
+    const finalDiscount = discounts !== undefined ? discounts : [];
+
+    OutputView.benefit(finalDiscount);
+
+    return finalDiscount;
   }
 
   #getDayOfWeek(date) {

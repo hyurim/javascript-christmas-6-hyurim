@@ -8,7 +8,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "특별 할인: ", amount: -1000 },
       { type: "증정 이벤트: ", amount: -25000 },
     ];
-    const result = totalDiscount(discount);
+    const result = totalDiscount(0, discount);
 
     expect(result).toEqual(-31423);
   });
@@ -19,7 +19,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "증정 이벤트: ", amount: -25000 },
     ];
 
-    const result = totalDiscount(discount);
+    const result = totalDiscount(0, discount);
 
     expect(result).toEqual(-31546);
   });
@@ -29,7 +29,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "증정 이벤트: ", amount: -25000 },
     ];
 
-    const result = totalDiscount(discount);
+    const result = totalDiscount(0, discount);
     expect(result).toEqual(-31069);
   });
   test("테스트 케이스 4: 크리스마스 이후 주말 할인(메인 5개)이 리턴 값으로 나와야 함.", () => {
@@ -38,7 +38,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "증정 이벤트: ", amount: -25000 },
     ];
 
-    const result = totalDiscount(discount);
+    const result = totalDiscount(0, discount);
     expect(result).toEqual(-35115);
   });
   test("테스트 케이스 5: 크리스마스 이후 평일 할인(디저트 4개)와 특별 할인이 리턴 값으로 나와야 함.", () => {
@@ -48,14 +48,14 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "증정 이벤트: ", amount: -25000 },
     ];
 
-    const result = totalDiscount(discount);
+    const result = totalDiscount(0, discount);
     expect(result).toEqual(-34092);
   });
   test("테스트 케이스 6: 1만원 이하 금액이라 할인 혜택이 적용되지 않아야 함.", () => {
 
     const discount = [];
 
-    const result = totalDiscount(discount);
+    const result = totalDiscount(0, discount);
     expect(result).toEqual(0);
   });
   test("테스트 케이스 7: 1만원 이상 12만원 이하 금액이라 샴페인 증정이 되지 않아야 함.", () => {
@@ -65,7 +65,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "특별 할인: ", amount: -1000 },
     ];
 
-    const result = totalDiscount(discount);
+    const result = totalDiscount(0, discount);
     expect(result).toEqual(-8346);
   });
 });

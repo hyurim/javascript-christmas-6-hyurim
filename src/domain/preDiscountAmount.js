@@ -1,5 +1,6 @@
 import { MENU } from "../constants/menu.js";
 import { NUMBERS } from "../constants/numbers.js";
+import OutputView from "../OutputView.js";
 
 const { zero } = NUMBERS;
 
@@ -14,6 +15,9 @@ const preDiscountAmount = (menuNames, quantities) => {
   const totalAmount = orderedFoods.reduce((total, food) => {
     return total + food.price * food.quantity;
   }, zero);
+
+  OutputView.preDiscount(totalAmount);
+  OutputView.free(totalAmount);
 
   return totalAmount;
 };
