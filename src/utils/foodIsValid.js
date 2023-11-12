@@ -1,15 +1,14 @@
-import ERROR from "../constants/error.js";
+import ERROR from "../constants/js";
 import { MENU, DRINK_MENU } from "../constants/menu.js";
 import { NUMBERS } from "../constants/numbers.js";
 import { SYMBOLS } from "../constants/prompt.js";
-import InputError from "../errors/InputError.js";
+import InputError from "../errors/Inputjs";
 
 const { comma, blank } = SYMBOLS;
 const { zero, menu_limit } = NUMBERS;
-
+const { invalid_order_error_message } = ERROR
 const foodIsValid = (order) => {
-  const menuNames = extractMenuNames(order);
-  const quantities = extractQuantities(order);
+  const { menuNames, quantities } = parseOrder(order);
 
   validateMultipleOrders(order);
   validateDuplication(menuNames);
@@ -22,13 +21,12 @@ const foodIsValid = (order) => {
   return true;
 };
 
-const extractMenuNames = (order) => {
-  return order.match(/[^\d,-]+/g);
+const parseOrder = (order) => {
+  const menuNames = order.match(/[^\d,-]+/g);
+  const quantities = order.match(/\d+/g);
+  return { menuNames, quantities };
 };
 
-const extractQuantities = (order) => {
-  return order.match(/\d+/g);
-};
 
 const validateMultipleOrders = (orders) => {
   const orderArray = orders.split(comma);
@@ -39,20 +37,20 @@ const validateMultipleOrders = (orders) => {
 const validateOrderFormat = (order) => {
   const regex = /^[가-힣]+\-\d+$/;
   if (!regex.test(order)) {
-    throw new InputError(ERROR.invalid_order_error_message);
+    throw new InputError(invalid_order_error_message);
   }
 };
 
 const validateDuplication = (menuNames) => {
   if (menuNames.length !== [...new Set(menuNames)].length) {
-    throw new InputError(ERROR.invalid_order_error_message);
+    throw new InputError(invalid_order_error_message);
   }
 };
 
 const validateOnlyDrink = (menuNames) => {
   const orders = menuNames.filter((drink) => !DRINK_MENU.includes(drink)).length;
   if (orders === zero) {
-    throw new InputError(ERROR.invalid_order_error_message);
+    throw new InputError(invalid_order_error_message);
   }
 };
 
@@ -61,26 +59,26 @@ const validateMenu = (menuNames) => {
     MENU.some((item) => item.menu === name)
   );
   if (!menuCheck) {
-    throw new InputError(ERROR.invalid_order_error_message);
+    throw new InputError(invalid_order_error_message);
   }
 };
 
 const validateNumbers = (quantities) => {
   if (!quantities.every((value) => value.trim() !== blank && Number.isInteger(Number(value)))) {
-    throw new InputError(ERROR.invalid_order_error_message);
+    throw new InputError(invalid_order_error_message);
   }
 };
 
 const validateOrderQuantity = (quantities) => {
   const quantity = quantities.reduce((total, amount) => total + parseInt(amount, 10), zero);
   if (quantity > menu_limit) {
-    throw new InputError(ERROR.invalid_order_error_message);
+    throw new InputError(invalid_order_error_message);
   }
 };
 
 const validateZeroInclude = (quantities) => {
   if (quantities.includes(`${zero}`)) {
-    throw new InputError(ERROR.invalid_order_error_message);
+    throw new InputError(invalid_order_error_message);
   }
 };
 
