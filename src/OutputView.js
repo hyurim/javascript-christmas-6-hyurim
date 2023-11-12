@@ -55,7 +55,7 @@ const OutputView = {
   },
 
   benefit(discount) {
-    this.print(benefit_detail);
+    // this.print(benefit_detail);
     this.print(benefit(discount));
   },
 

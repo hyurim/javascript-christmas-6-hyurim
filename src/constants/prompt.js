@@ -12,6 +12,7 @@ const PROMPT = Object.freeze({
   total_benefit_detail: "\n<총혜택 금액>",
   discounted_amount: "\n<할인 후 예상 결제 금액>",
   event_badge: "\n<12월 이벤트 배지>",
+  none: "없음"
 });
 
 const SYMBOLS = Object.freeze({

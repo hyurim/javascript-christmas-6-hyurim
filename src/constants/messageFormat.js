@@ -16,10 +16,7 @@ const messageFormat = {
 
   free: (totalprice) => (totalprice < presentAmount ? "없음" : "샴페인 1개"),
 
-  benefit: (discount) =>
-    discount.length !== zero
-      ? discount.map((item) => `${item.type}${item.amount.toLocaleString()}원`).join(LINE_SEPARATOR)
-      : "없음",
+  benefit: (item) => item !== zero ? `${item.type}${item.amount.toLocaleString()}원` : "없음",
 
   totalBenefit: (totalDiscountPrice) => `${totalDiscountPrice.toLocaleString()}원`,
 

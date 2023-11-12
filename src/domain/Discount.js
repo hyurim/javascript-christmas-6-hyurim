@@ -1,5 +1,6 @@
 import { DESSERT_MENU, MAIN_MENU } from "../constants/menu.js";
 import { DAY, DISCOUNT, NUMBERS } from "../constants/numbers.js";
+import { PROMPT } from "../constants/prompt.js";
 import OutputView from "../OutputView.js";
 import benefit from "./benefit.js";
 
@@ -7,17 +8,25 @@ const { discount_price, special_discount, basis, day_discount, day_basis } =
   DISCOUNT;
 const { christmas, sunday } = DAY;
 const { year, month, zero, discount_start } = NUMBERS;
+const { benefit_detail, none } = PROMPT;
 
 class Discount {
   discountPrice(menu, date, totalPrice) {
     const day = this.#getDayOfWeek(date);
     const christmas = this.#ChristmasDday(date);
-    const week = day <= 5 ? this.#week(menu, DESSERT_MENU) : this.#week(menu, MAIN_MENU);
+    const week =
+      day <= 5 ? this.#week(menu, DESSERT_MENU) : this.#week(menu, MAIN_MENU);
     const special = this.#special(day, date);
-    const discounts = this.#eachDiscount(christmas, week, special, totalPrice, day);
+    const discounts = this.#eachDiscount(
+      christmas,
+      week,
+      special,
+      totalPrice,
+      day
+    );
     const finalDiscount = discounts !== undefined ? discounts : [];
 
-    OutputView.benefit(finalDiscount);
+    this.#discountOutput(finalDiscount);
 
     return finalDiscount;
   }
@@ -51,6 +60,12 @@ class Discount {
     if (totalPrice >= discount_start) {
       return benefit(christmas, week, special, totalPrice, day);
     }
+  }
+
+  #discountOutput(finalDiscount) {
+    OutputView.print(benefit_detail);
+    finalDiscount.length !== zero
+      ? finalDiscount.map((item) => OutputView.benefit(item)) : OutputView.benefit(zero);
   }
 }
 export default Discount;
