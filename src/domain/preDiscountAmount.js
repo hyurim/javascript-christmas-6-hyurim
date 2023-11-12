@@ -16,10 +16,14 @@ const preDiscountAmount = (menuNames, quantities) => {
     return total + food.price * food.quantity;
   }, zero);
 
-  OutputView.preDiscount(totalAmount);
-  OutputView.free(totalAmount);
+  preDiscountAmountOutput(totalAmount);
 
   return totalAmount;
 };
+
+const preDiscountAmountOutput = (totalAmount) => {
+  OutputView.preDiscount(totalAmount);
+  OutputView.free(totalAmount);
+}
 
 export default preDiscountAmount;
