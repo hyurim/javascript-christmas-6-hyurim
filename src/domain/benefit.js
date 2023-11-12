@@ -8,7 +8,8 @@ const {
   specials_discount,
   gift_event,
 } = PROMPT_IN;
-const { zero, weekend_start, champagne } = NUMBERS;
+const { zero, weekend_start, presentAmount, champagne } = NUMBERS;
+
 const benefit = (christmas, week, special, totalPrice, day) => {
   let discounts = [];
   const christmasDiscountInfo = christmasBenefit(christmas);
@@ -19,12 +20,11 @@ const benefit = (christmas, week, special, totalPrice, day) => {
   discounts.push(weekDiscountInfo);
   discounts.push(specialDiscountInfo);
   discounts.push(giftDiscountInfo);
-
   return discounts.filter((value) => value !== undefined);
 };
 
 const christmasBenefit = (christmas) => {
-  if (christmas !== zero) {
+  if (Number(christmas) !== zero) {
     return { type: d_day_discount, amount: christmas };
   }
 };
@@ -36,13 +36,13 @@ const weekBenefit = (weekday, day) => {
 };
 
 const specialBenefit = (special) => {
-  if (special !== zero) {
+  if (Number(special) !== zero) {
     return { type: specials_discount, amount: special };
   }
 };
 
 const giftBenefit = (totalPrice) => {
-  if (totalPrice >= 120000) {
+  if (totalPrice >= presentAmount) {
     return { type: gift_event, amount: -champagne };
   }
 };
