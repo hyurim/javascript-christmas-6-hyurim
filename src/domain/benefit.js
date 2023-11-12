@@ -1,49 +1,30 @@
 import { NUMBERS } from "../constants/numbers.js";
 import { PROMPT_IN } from "../constants/prompt.js";
 
-const {
-  d_day_discount,
-  weekday_discount,
-  weekend_discount,
-  specials_discount,
-  gift_event,
-} = PROMPT_IN;
+const { d_day_discount, weekday_discount, weekend_discount, specials_discount, gift_event } = PROMPT_IN;
 const { zero, weekend_start, presentAmount, champagne } = NUMBERS;
 
 const benefit = (christmas, week, special, totalPrice, day) => {
-  let discounts = [];
-  const christmasDiscountInfo = christmasBenefit(christmas);
-  const weekDiscountInfo = weekBenefit(week, day);
-  const specialDiscountInfo = specialBenefit(special);
-  const giftDiscountInfo = giftBenefit(totalPrice);
-  discounts.push(christmasDiscountInfo);
-  discounts.push(weekDiscountInfo);
-  discounts.push(specialDiscountInfo);
-  discounts.push(giftDiscountInfo);
-  return discounts.filter((value) => value !== undefined);
+  const discounts = [
+    christmasBenefit(christmas),
+    weekBenefit(week, day),
+    specialBenefit(special),
+    giftBenefit(totalPrice),
+  ].filter((value) => value !== undefined);
+
+  return discounts;
 };
 
-const christmasBenefit = (christmas) => {
-  if (Number(christmas) !== zero) {
-    return { type: d_day_discount, amount: christmas };
-  }
-};
-const weekBenefit = (weekday, day) => {
-  if (day >= weekend_start) {
-    return { type: weekend_discount, amount: weekday };
-  }
-  return { type: weekday_discount, amount: weekday };
-};
+const christmasBenefit = (christmas) =>
+  Number(christmas) !== zero ? { type: d_day_discount, amount: christmas } : undefined;
 
-const specialBenefit = (special) => {
-  if (Number(special) !== zero) {
-    return { type: specials_discount, amount: special };
-  }
-};
+const weekBenefit = (weekday, day) =>
+  day >= weekend_start ? { type: weekend_discount, amount: weekday } : { type: weekday_discount, amount: weekday };
 
-const giftBenefit = (totalPrice) => {
-  if (totalPrice >= presentAmount) {
-    return { type: gift_event, amount: -champagne };
-  }
-};
+const specialBenefit = (special) =>
+  Number(special) !== zero ? { type: specials_discount, amount: special } : undefined;
+
+const giftBenefit = (totalPrice) =>
+  totalPrice >= presentAmount ? { type: gift_event, amount: -champagne } : undefined;
+
 export default benefit;
