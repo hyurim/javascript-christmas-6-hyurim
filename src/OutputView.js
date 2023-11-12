@@ -6,7 +6,6 @@ const {
   start,
   pre_discount_total,
   free_menu,
-  benefit_detail,
   total_benefit_detail,
   discounted_amount,
   event_badge,
@@ -55,7 +54,6 @@ const OutputView = {
   },
 
   benefit(discount) {
-    // this.print(benefit_detail);
     this.print(benefit(discount));
   },
 

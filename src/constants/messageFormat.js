@@ -1,8 +1,7 @@
 import { NUMBERS } from "./numbers.js";
 import ERROR from "./error.js";
-import { EOL as LINE_SEPARATOR } from "os";
 
-const { zero, presentAmount, champagne } = NUMBERS;
+const { zero, presentAmount } = NUMBERS;
 const { prefix } = ERROR;
 
 const messageFormat = {
@@ -20,10 +19,7 @@ const messageFormat = {
 
   totalBenefit: (totalDiscountPrice) => `${totalDiscountPrice.toLocaleString()}원`,
 
-  discountedAmount: (totalPrice, totalDiscount) =>
-    totalPrice > presentAmount
-      ? `${(totalPrice + totalDiscount + champagne).toLocaleString()}원`
-      : `${(totalPrice + totalDiscount).toLocaleString()}원`,
+  discountedAmount: (total) => `${total.toLocaleString()}원`,
 
   badge: (selectedBadge) => (selectedBadge !== undefined ? selectedBadge.badge : "없음"),
 };

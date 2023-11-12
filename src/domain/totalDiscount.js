@@ -1,16 +1,23 @@
 import { NUMBERS } from "../constants/numbers.js";
 import OutputView from "../OutputView.js";
 
-const { zero } = NUMBERS;
+const { zero, presentAmount, champagne } = NUMBERS;
 
 const totalDiscount = (totalPrice, discount) => {
 
   const total = discount.map((cost) => cost.amount)
     .reduce((total, discount) => total + discount, zero);
-    
-    OutputView.totalBenefit(total);
-    OutputView.discountedAmount(totalPrice, total);
+
+    totalDiscountOutput(totalPrice, total);
+
   return total;
 };
+
+const totalDiscountOutput = (totalPrice, total) => {
+  OutputView.totalBenefit(total);
+  
+  const totalDiscountAmount = totalPrice > presentAmount ? totalPrice + total + champagne : totalPrice + total;
+  OutputView.discountedAmount(totalDiscountAmount);
+}
 
 export default totalDiscount;
