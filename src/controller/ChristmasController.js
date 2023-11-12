@@ -1,4 +1,3 @@
-import { Console } from "@woowacourse/mission-utils";
 import InputView from "../InputView.js";
 import dateIsValid from "../utils/dateIsValid.js";
 import foodIsValid from "../utils/foodIsValid.js";
