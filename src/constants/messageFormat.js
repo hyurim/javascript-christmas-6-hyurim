@@ -40,7 +40,7 @@ const messageFormat = {
       : `${(totalPrice + totalDiscount).toLocaleString()}원`,
 
   badge: (selectedBadge) =>
-    selectedBadge && selectedBadge.badge ? selectedBadge.badge : "없음",
+    selectedBadge !== undefined ? selectedBadge.badge : "없음",
 };
 
 export default messageFormat;
