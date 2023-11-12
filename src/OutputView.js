@@ -4,7 +4,6 @@ import messageFormat from "./constants/messageFormat.js";
 
 const {
   start,
-  order_menu,
   pre_discount_total,
   free_menu,
   benefit_detail,
@@ -42,7 +41,6 @@ const OutputView = {
   },
 
   menu(menuNames, quantities) {
-    this.print(order_menu);
     this.print(menu(menuNames, quantities));
   },
 

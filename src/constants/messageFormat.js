@@ -10,13 +10,7 @@ const messageFormat = {
 
   preview: (date) => `12월 ${date}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!`,
 
-  menu: (menuNames, quantities) =>
-    menuNames
-      .map((name, index) => {
-        const quantity = quantities ? quantities[index] : "0";
-        return `${name} ${quantity}개`;
-      })
-      .join(LINE_SEPARATOR),
+  menu: (menuNames, quantities) => `${menuNames} ${quantities}개`,
 
   preDiscount: (totalprice) => `${totalprice.toLocaleString()}원`,
 
