@@ -1,7 +1,7 @@
 import badge from "../../src/domain/badge.js";
 
 describe("badge 기능 테스트", () => {
-  test("테스트 케이스 1: 할인 금액이 0일 때 배지는 '없음'이어야 함", () => {
+  test("테스트 케이스 1: 할인 금액이 0일 때 undefined가 반환되이어야 함.", () => {
     const totalDiscountPrice = 0;
 
     const result = badge(totalDiscountPrice);
@@ -31,7 +31,7 @@ describe("badge 기능 테스트", () => {
 
     expect(result.badge).toEqual("별");
   });
-  test("테스트 케이스 4: 할인 금액이 0원 이상일 때 '없음' 이여야 함.", () => {
+  test("테스트 케이스 4: 할인 금액이 0원 이상일 때 undefined가 반환되이어야 함.", () => {
     const totalDiscountPrice = 1000;
 
     const result = badge(totalDiscountPrice);

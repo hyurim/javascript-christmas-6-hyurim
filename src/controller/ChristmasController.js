@@ -49,7 +49,6 @@ class ChristmasController {
     const discount = this.#discount.discountPrice(menu, date, totalPrice);
     const totalDiscountPrice = totalDiscount(discount);
     const selectedBadge = badge(totalDiscountPrice);
-    console.log(selectedBadge);
     this.#handleChristmasOutput(
       date,
       menu,

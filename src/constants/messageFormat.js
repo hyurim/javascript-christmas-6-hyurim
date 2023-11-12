@@ -1,6 +1,6 @@
 import { NUMBERS } from "./numbers.js";
 import ERROR from "./error.js";
-
+import { EOL as LINE_SEPARATOR } from "os";
 const { zero, presentAmount, champagne } = NUMBERS;
 
 const messageFormat = {
@@ -15,7 +15,7 @@ const messageFormat = {
           quantities && quantities[index] !== null ? quantities[index] : "0";
         return `${name} ${quantity}개`;
       })
-      .join("\n");
+      .join(LINE_SEPARATOR);
     return formattedMenu;
   },
 
@@ -26,7 +26,7 @@ const messageFormat = {
     if (discount.length !== zero) {
       const benefitPrint = discount
         .map((item) => `${item.type}${item.amount.toLocaleString()}원`)
-        .join("\n");
+        .join(LINE_SEPARATOR);
       return benefitPrint;
     }
     return "없음";
