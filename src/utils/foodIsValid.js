@@ -1,8 +1,8 @@
-import ERROR from "../constants/js";
+import ERROR from "../constants/error.js";
 import { MENU, DRINK_MENU } from "../constants/menu.js";
 import { NUMBERS } from "../constants/numbers.js";
 import { SYMBOLS } from "../constants/prompt.js";
-import InputError from "../errors/Inputjs";
+import InputError from "../errors/InputError.js";
 
 const { comma, blank } = SYMBOLS;
 const { zero, menu_limit } = NUMBERS;
