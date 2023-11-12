@@ -11,16 +11,9 @@ class Discount {
   discountPrice(menu, date, totalPrice) {
     const day = this.#getDayOfWeek(date);
     const christmas = this.#ChristmasDday(date);
-    const week =
-      day <= 5 ? this.#week(menu, DESSERT_MENU) : this.#week(menu, MAIN_MENU);
+    const week = day <= 5 ? this.#week(menu, DESSERT_MENU) : this.#week(menu, MAIN_MENU);
     const special = this.#special(day, date);
-    const discounts = this.#eachDiscount(
-      christmas,
-      week,
-      special,
-      totalPrice,
-      day
-    );
+    const discounts = this.#eachDiscount(christmas, week, special, totalPrice, day);
     return discounts !== undefined ? discounts : [];
   }
 
@@ -30,7 +23,7 @@ class Discount {
   }
   #ChristmasDday(date) {
     if (date <= christmas) {
-      return -((date - day_basis) * day_discount + basis);
+      return (date - day_basis) * day_discount + basis;
     }
     return zero;
   }
@@ -41,11 +34,11 @@ class Discount {
       }
       return acc;
     }, 0);
-    return -(piece * discount_price);
+    return piece * discount_price;
   }
   #special(day, date) {
     if (day === sunday || Number(date) === christmas) {
-      return -special_discount;
+      return special_discount;
     }
     return zero;
   }

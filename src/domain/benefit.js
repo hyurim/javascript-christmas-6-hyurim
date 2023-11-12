@@ -16,13 +16,13 @@ const benefit = (christmas, week, special, totalPrice, day) => {
 };
 
 const christmasBenefit = (christmas) =>
-  Number(christmas) !== zero ? { type: d_day_discount, amount: christmas } : undefined;
+  Number(christmas) !== zero ? { type: d_day_discount, amount: -christmas } : undefined;
 
 const weekBenefit = (weekday, day) =>
-  day >= weekend_start ? { type: weekend_discount, amount: weekday } : { type: weekday_discount, amount: weekday };
+  day >= weekend_start ? { type: weekend_discount, amount: -weekday } : { type: weekday_discount, amount: -weekday };
 
 const specialBenefit = (special) =>
-  Number(special) !== zero ? { type: specials_discount, amount: special } : undefined;
+  Number(special) !== zero ? { type: specials_discount, amount: -special } : undefined;
 
 const giftBenefit = (totalPrice) =>
   totalPrice >= presentAmount ? { type: gift_event, amount: -champagne } : undefined;

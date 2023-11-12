@@ -8,8 +8,9 @@ const { comma, blank } = SYMBOLS;
 const { zero, menu_limit } = NUMBERS;
 
 const foodIsValid = (order) => {
-  const menuNames = order.match(/[^\d,-]+/g);
-  const quantities = order.match(/\d+/g);
+  const menuNames = extractMenuNames(order);
+  const quantities = extractQuantities(order);
+
   validateMultipleOrders(order);
   validateDuplication(menuNames);
   validateOnlyDrink(menuNames);
@@ -17,12 +18,21 @@ const foodIsValid = (order) => {
   validateOrderQuantity(quantities);
   validateNumbers(quantities);
   validateZeroInclude(quantities);
+
   return true;
+};
+
+const extractMenuNames = (order) => {
+  return order.match(/[^\d,-]+/g);
+};
+
+const extractQuantities = (order) => {
+  return order.match(/\d+/g);
 };
 
 const validateMultipleOrders = (orders) => {
   const orderArray = orders.split(comma);
-  orderArray.forEach((order) => validateOrderFormat(order));
+  orderArray.forEach(validateOrderFormat);
   return true;
 };
 
@@ -40,9 +50,7 @@ const validateDuplication = (menuNames) => {
 };
 
 const validateOnlyDrink = (menuNames) => {
-  const orders = menuNames.filter(
-    (drink) => !DRINK_MENU.includes(drink)
-  ).length;
+  const orders = menuNames.filter((drink) => !DRINK_MENU.includes(drink)).length;
   if (orders === zero) {
     throw new InputError(ERROR.invalid_order_error_message);
   }
@@ -58,29 +66,22 @@ const validateMenu = (menuNames) => {
 };
 
 const validateNumbers = (quantities) => {
-  if (
-    !quantities.every(
-      (value) => value.trim() !== blank && Number.isInteger(Number(value))
-    )
-  ) {
+  if (!quantities.every((value) => value.trim() !== blank && Number.isInteger(Number(value)))) {
     throw new InputError(ERROR.invalid_order_error_message);
   }
 };
 
 const validateOrderQuantity = (quantities) => {
-  const quantity = quantities.reduce(
-    (total, amount) => total + parseInt(amount, 10),
-    zero
-  );
+  const quantity = quantities.reduce((total, amount) => total + parseInt(amount, 10), zero);
   if (quantity > menu_limit) {
     throw new InputError(ERROR.invalid_order_error_message);
   }
 };
 
 const validateZeroInclude = (quantities) => {
-  if (quantities.includes(`${zero}`)){
+  if (quantities.includes(`${zero}`)) {
     throw new InputError(ERROR.invalid_order_error_message);
   }
-}
+};
 
 export default foodIsValid;
