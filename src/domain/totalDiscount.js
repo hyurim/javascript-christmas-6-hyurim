@@ -3,6 +3,13 @@ import OutputView from "../OutputView.js";
 
 const { zero, presentAmount, champagne } = NUMBERS;
 
+/**
+ * 총 할인 금액을 계산하고 출력함.
+ * 
+ * @param {number} totalPrice - 할인 적용 전 총 주문 가격
+ * @param {Array} discount - 각 할인 항목의 금액 정보가 담긴 배열
+ * @returns {number} - 홍 할인 금액
+ */
 const totalDiscount = (totalPrice, discount) => {
 
   const total = discount.map((cost) => cost.amount)
@@ -13,6 +20,12 @@ const totalDiscount = (totalPrice, discount) => {
   return total;
 };
 
+/**
+ * 총 할인 금액 및 할인 적용 후 총 주문 가격 출력.
+ * 
+ * @param {number} totalPrice 
+ * @param {number} total 
+ */
 const totalDiscountOutput = (totalPrice, total) => {
   OutputView.totalBenefit(total);
   
