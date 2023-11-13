@@ -69,7 +69,7 @@ const validateOrderFormat = (order) => {
 /**
  * 중복된 메뉴가 있는지 검사함.
  * 
- * @param {string[]} menuNames - 메뉴 이름 목록
+ * @param {string[]} menuNames - 주문한 메뉴 이름 배열
  * @throws {InputError} - 중복된 메뉴가 있을 경우 발생하는 예외
  */
 const validateDuplication = (menuNames) => {
@@ -81,7 +81,7 @@ const validateDuplication = (menuNames) => {
 /**
  * 음료만 있는지 검사함.
  * 
- * @param {string[]} menuNames - 메뉴 이름 목록
+ * @param {string[]} menuNames - 주문한 메뉴 이름 배열
  * @throws {InputError} - 음료만 주문한 경우 발생하는 예외
  */
 const validateOnlyDrink = (menuNames) => {
@@ -94,7 +94,7 @@ const validateOnlyDrink = (menuNames) => {
 /**
  * 주문한 메뉴가 유효한 검사함.
  * 
- * @param {string[]} menuNames - 메뉴 이름 목록
+ * @param {string[]} menuNames - 주문한 메뉴 이름 배열
  * @throws {InputError} - 주문한 메뉴가 유효하지 않은 경우 발생하는 예외
  */
 const validateMenu = (menuNames) => {
@@ -109,7 +109,7 @@ const validateMenu = (menuNames) => {
 /**
  * 주문 수량이 제한을 초과하는지 검사함.
  * 
- * @param {string[]} quantities - 수량 목록
+ * @param {string[]} quantities - 주문한 수량 배열
  * @throws {InputError} - 주문 수량이 제한을 초과하는 경우 발생하는 예외.
  */
 const validateOrderQuantity = (quantities) => {
@@ -122,7 +122,7 @@ const validateOrderQuantity = (quantities) => {
 /**
  * 주문 수량이 0이 포함되어 있는지 검사함.
  * 
- * @param {string[]} quantities - 수량 목록
+ * @param {string[]} quantities - 주문한 수량 배열
  * @throws {InputError} - 주문 수량에 0이 포함된 경우 발생하는 예외
  */
 const validateZeroInclude = (quantities) => {
@@ -134,7 +134,7 @@ const validateZeroInclude = (quantities) => {
 /**
  * 수량이 숫자로만 이루어져 있는지 검사함.
  * 
- * @param {string[]} quantities - 수량 목록
+ * @param {string[]} quantities - 주문한 수량 배열
  * @throws {InputError} - 수량이 숫자로만 구성되어 있지 않은 경우 발생하는 예외
  */
 const validateNumbers = (quantities) => {
