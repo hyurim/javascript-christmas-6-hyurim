@@ -83,7 +83,7 @@ const OutputView = {
   },
 
   /**
-   * 
+   * 할인된 최종 금액 출력
    * @param {number} totalPrice - 할인 전 총 금액
    * @param {number} totalDiscount - 총 할인 금액
    */

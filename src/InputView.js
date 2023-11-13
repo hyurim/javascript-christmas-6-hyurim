@@ -10,7 +10,7 @@ const InputView = {
   /**
    * 사용자로부터 날짜 입력을 받는 메서드
    * @async
-   * @returns {Promise<string>} // 입력받은 날짜
+   * @returns {Promise<string>} - 입력받은 날짜
    */
   async date() {
     return await Console.readLineAsync(select_date);
@@ -19,7 +19,7 @@ const InputView = {
   /**
    * 사용자로부터 음식 주문을 받는 메서드
    * @async
-   * @returns {Promise<string>} 입력받은 음식 주문
+   * @returns {Promise<string>} - 입력받은 음식 주문
    */
   async food() {
     return await Console.readLineAsync(select_menu);

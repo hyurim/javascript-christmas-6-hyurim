@@ -23,8 +23,8 @@ const totalDiscount = (totalPrice, discount) => {
 /**
  * 총 할인 금액 및 할인 적용 후 총 주문 가격 출력.
  * 
- * @param {number} totalPrice 
- * @param {number} total 
+ * @param {number} totalPrice - 할인 적용 전 총 주문 가격
+ * @param {number} total - 총 할인 금액
  */
 const totalDiscountOutput = (totalPrice, total) => {
   OutputView.totalBenefit(total);
