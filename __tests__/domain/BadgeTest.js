@@ -51,6 +51,7 @@ describe("badge 기능 테스트", () => {
     const expected = "트리"
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(expected));
   });
+  
   test("테스트 케이스 4: 할인 금액이 5천원 이상 1만원 미만일 때 별이 출력되어야 함.", () => {
     // given
     const totalDiscountPrice = -9999;
@@ -62,6 +63,7 @@ describe("badge 기능 테스트", () => {
     const expected = "별"
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(expected));
   });
+
   test("테스트 케이스 5: 할인 금액이 0원 이상일 때 없음이 출력되이어야 함.", () => {
     // given
     const totalDiscountPrice = 1000;
