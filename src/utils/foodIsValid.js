@@ -2,21 +2,23 @@ import ERROR from "../constants/error.js";
 import { MENU, DRINK_MENU } from "../constants/menu.js";
 import { NUMBERS } from "../constants/numbers.js";
 import { SYMBOLS } from "../constants/prompt.js";
+import orderMenu from "../domain/orderMenu.js";
 import InputError from "../errors/InputError.js";
 
 const { comma, blank } = SYMBOLS;
 const { zero, menu_limit } = NUMBERS;
-const { invalid_order_error_message } = ERROR
-const foodIsValid = (order) => {
-  const { menuNames, quantities } = parseOrder(order);
+const { invalid_order_error_message } = ERROR;
 
-  validateMultipleOrders(order);
+const foodIsValid = (order) => {
+  const { menuNames, quantities, orderMenu } = parseOrder(order);
+
+  validateMultipleOrders(orderMenu);
   validateDuplication(menuNames);
   validateOnlyDrink(menuNames);
   validateMenu(menuNames);
   validateOrderQuantity(quantities);
-  validateNumbers(quantities);
   validateZeroInclude(quantities);
+  validateNumbers(quantities);
 
   return true;
 };
@@ -24,13 +26,13 @@ const foodIsValid = (order) => {
 const parseOrder = (order) => {
   const menuNames = order.match(/[^\d,-]+/g);
   const quantities = order.match(/\d+/g);
-  return { menuNames, quantities };
+  const orderMenu = order.split(comma);
+  return { menuNames, quantities, orderMenu };
 };
 
 
-const validateMultipleOrders = (orders) => {
-  const orderArray = orders.split(comma);
-  orderArray.forEach(validateOrderFormat);
+const validateMultipleOrders = (orderMenu) => {
+  orderMenu.forEach(validateOrderFormat);
   return true;
 };
 
@@ -63,12 +65,6 @@ const validateMenu = (menuNames) => {
   }
 };
 
-const validateNumbers = (quantities) => {
-  if (!quantities.every((value) => value.trim() !== blank && Number.isInteger(Number(value)))) {
-    throw new InputError(invalid_order_error_message);
-  }
-};
-
 const validateOrderQuantity = (quantities) => {
   const quantity = quantities.reduce((total, amount) => total + parseInt(amount, 10), zero);
   if (quantity > menu_limit) {
@@ -78,6 +74,12 @@ const validateOrderQuantity = (quantities) => {
 
 const validateZeroInclude = (quantities) => {
   if (quantities.includes(`${zero}`)) {
+    throw new InputError(invalid_order_error_message);
+  }
+};
+
+const validateNumbers = (quantities) => {
+  if (!quantities.every((value) => value.trim() !== blank && Number.isInteger(Number(value)))) {
     throw new InputError(invalid_order_error_message);
   }
 };

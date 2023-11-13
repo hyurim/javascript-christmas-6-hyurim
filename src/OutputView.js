@@ -2,25 +2,9 @@ import { Console } from "@woowacourse/mission-utils";
 import { PROMPT } from "./constants/prompt.js";
 import messageFormat from "./constants/messageFormat.js";
 
-const {
-  start,
-  pre_discount_total,
-  free_menu,
-  total_benefit_detail,
-  discounted_amount,
-  event_badge,
-} = PROMPT;
+const { start, pre_discount_total, free_menu, total_benefit_detail, discounted_amount, event_badge, } = PROMPT;
 
-const {
-  preview,
-  menu,
-  preDiscount,
-  free,
-  benefit,
-  totalBenefit,
-  discountedAmount,
-  badge,
-} = messageFormat;
+const { preview, menu, preDiscount, free, benefit, totalBenefit, discountedAmount, badge, } = messageFormat;
 
 const OutputView = {
   print(message) {

@@ -6,8 +6,9 @@ const dateIsValid = (date) => {
   return true;
 };
 
-const validTest = (date) => {
-  if (!/^([1-9]|[12][0-9]|3[0-1])$/.test(date)) {
+const validTest = (date) => { 
+  const regex = /^([1-9]|[12][0-9]|3[0-1])$/
+  if (!regex.test(date)) {
     throw new InputError(ERROR.invalid_date_error_message);
   }
 };

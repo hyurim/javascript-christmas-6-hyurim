@@ -4,7 +4,8 @@ const PROMPT = Object.freeze({
     "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)\n",
   select_menu:
     "주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)\n",
-  preview: "12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!",
+  month: "12월 ",
+  preview: "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!",
   order_menu: "\n<주문 메뉴>",
   pre_discount_total: "\n<할인 전 총주문 금액>",
   free_menu: "\n<증정 메뉴>",
@@ -12,17 +13,14 @@ const PROMPT = Object.freeze({
   total_benefit_detail: "\n<총혜택 금액>",
   discounted_amount: "\n<할인 후 예상 결제 금액>",
   event_badge: "\n<12월 이벤트 배지>",
-  none: "없음"
+  champagne: "샴페인 1개",
+  none: "없음",
+  won: "원",
+  piece: "개",
 });
 
 const SYMBOLS = Object.freeze({
-  won: "원",
-  piece: "개",
-  space: " ",
   comma: ",",
-  space_and_comma: ", ",
-  dot: ".",
-  newline: "\n",
   blank: "",
 });
 
