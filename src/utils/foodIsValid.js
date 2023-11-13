@@ -92,7 +92,7 @@ const validateOnlyDrink = (menuNames) => {
 };
 
 /**
- * 주문한 메뉴가 유효한 검사함.
+ * 주문한 메뉴가 메뉴에 있는지 검사함.
  * 
  * @param {string[]} menuNames - 주문한 메뉴 이름 배열
  * @throws {InputError} - 주문한 메뉴가 유효하지 않은 경우 발생하는 예외
