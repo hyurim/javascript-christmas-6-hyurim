@@ -10,7 +10,8 @@ describe("preDiscountAmount 기능 테스트", () => {
     const result = preDiscountAmount(menuNames, quantities);
 
     // then
-    expect(result).toEqual(148000);
+    const expected = 148000;
+    expect(result).toEqual(expected);
   });
 
   test("테스트 케이스 2: 음료부터 주문되었을 때도 정확한 금액이 계산되어야 함.", () => {
@@ -22,7 +23,8 @@ describe("preDiscountAmount 기능 테스트", () => {
     const result = preDiscountAmount(menuNames, quantities);
 
     // then
-    expect(result).toEqual(176500);
+    const expected = 176500
+    expect(result).toEqual(expected);
   })
 });
 

@@ -13,7 +13,8 @@ describe("TotalDiscount 기능 테스트", () => {
     const result = totalDiscount(0, discount);
     
     // then
-    expect(result).toEqual(-31423);
+    const expected = -31423
+    expect(result).toEqual(expected);
   });
 
   test("테스트 케이스 2: 토요일일 때 주말 할인(메인 2개)이 리턴 값으로 나와야 함.", () => {
@@ -27,7 +28,8 @@ describe("TotalDiscount 기능 테스트", () => {
     const result = totalDiscount(0, discount);
     
     // then
-    expect(result).toEqual(-31546);
+    const expected = -31546
+    expect(result).toEqual(expected);
   });
 
   test("테스트 케이스 3: 크리스마스 이후 평일 할인(디저트 3개)이 리턴 값으로 나와야 함.", () => {
@@ -40,7 +42,8 @@ describe("TotalDiscount 기능 테스트", () => {
     const result = totalDiscount(0, discount);
     
     // then
-    expect(result).toEqual(-31069);
+    const expected = -31069
+    expect(result).toEqual(expected);
   });
 
   test("테스트 케이스 4: 크리스마스 이후 주말 할인(메인 5개)이 리턴 값으로 나와야 함.", () => {
@@ -53,7 +56,8 @@ describe("TotalDiscount 기능 테스트", () => {
     const result = totalDiscount(0, discount);
     
     // then
-    expect(result).toEqual(-35115);
+    const expected = -35115
+    expect(result).toEqual(expected);
   });
 
   test("테스트 케이스 5: 크리스마스 이후 평일 할인(디저트 4개)와 특별 할인이 리턴 값으로 나와야 함.", () => {
@@ -67,7 +71,8 @@ describe("TotalDiscount 기능 테스트", () => {
     const result = totalDiscount(0, discount);
     
     // then
-    expect(result).toEqual(-34092);
+    const expected = -34092
+    expect(result).toEqual(expected);
   });
 
   test("테스트 케이스 6: 1만원 이하 금액이라 할인 혜택이 적용되지 않아야 함.", () => {
@@ -78,7 +83,8 @@ describe("TotalDiscount 기능 테스트", () => {
     const result = totalDiscount(0, discount);
     
     // then
-    expect(result).toEqual(0);
+    const expected = 0
+    expect(result).toEqual(expected);
   });
 
   test("테스트 케이스 7: 1만원 이상 12만원 이하 금액이라 샴페인 증정이 되지 않아야 함.", () => {
@@ -93,6 +99,7 @@ describe("TotalDiscount 기능 테스트", () => {
     const result = totalDiscount(0, discount);
     
     // then
-    expect(result).toEqual(-8346);
+    const expected = -8346
+    expect(result).toEqual(expected);
   });
 });

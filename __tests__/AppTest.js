@@ -71,7 +71,6 @@ describe("전체 기능 테스트", () => {
       "<12월 이벤트 배지>",
       "산타",
     ];
-
     expectLogContains(getOutput(logSpy), expected);
   });
   test("12만원 이하의 금액을 입력한 경우", async () => {
@@ -108,7 +107,6 @@ describe("전체 기능 테스트", () => {
       "<12월 이벤트 배지>",
       "별",
     ];
-
     expectLogContains(getOutput(logSpy), expected);
   })
 });
