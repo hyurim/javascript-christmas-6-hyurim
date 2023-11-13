@@ -32,6 +32,7 @@ const preDiscountAmount = (menuNames, quantities) => {
  * 할인 전 총 주문 가격을 출력함.
  * 
  * @param {number} totalAmount - 할인 전 총 주문 가격
+ * @returns {void}
  */
 const preDiscountAmountOutput = (totalAmount) => {
   OutputView.preDiscount(totalAmount);

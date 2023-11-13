@@ -27,6 +27,7 @@ const orderMenu = (food) => {
  * 
  * @param {Array} menuNames - 음식 목록
  * @param {Array} quantities - 수량 목록
+ * @returns {void}
  */
 const orderMenuOutput = (menuNames, quantities) => {
   OutputView.print(order_menu);

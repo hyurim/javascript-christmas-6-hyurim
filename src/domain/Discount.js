@@ -110,6 +110,7 @@ class Discount {
    * 최종 할인 혜택 출력
    *
    * @param {Array} finalDiscount - 최종 할인 혜택 목록
+   * @returns {void}
    */
   #discountOutput(finalDiscount) {
     OutputView.print(benefit_detail);
