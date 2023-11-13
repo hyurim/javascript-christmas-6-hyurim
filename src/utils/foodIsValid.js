@@ -2,7 +2,6 @@ import ERROR from "../constants/error.js";
 import { MENU, DRINK_MENU } from "../constants/menu.js";
 import { NUMBERS } from "../constants/numbers.js";
 import { SYMBOLS } from "../constants/prompt.js";
-import orderMenu from "../domain/orderMenu.js";
 import InputError from "../errors/InputError.js";
 
 const { comma, blank } = SYMBOLS;
