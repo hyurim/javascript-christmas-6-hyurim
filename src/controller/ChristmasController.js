@@ -89,6 +89,7 @@ class ChristmasController {
    * 크리스마스 이벤트 로직을 처리하는 메서드
    * @param {string} date - 날짜
    * @param {string} food - 음식 주문
+   * @returns {void}
    */
   handleChristmasLogic(date, food) {
     OutputView.preView(date);

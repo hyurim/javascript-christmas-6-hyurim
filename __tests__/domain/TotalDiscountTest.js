@@ -9,6 +9,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "특별 할인: ", amount: -1000 },
       { type: "증정 이벤트: ", amount: -25000 },
     ];
+
     // when
     const result = totalDiscount(0, discount);
     
@@ -24,6 +25,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "주말 할인: ", amount: -4046 },
       { type: "증정 이벤트: ", amount: -25000 },
     ];
+
     // when
     const result = totalDiscount(0, discount);
     
@@ -38,6 +40,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "평일 할인: ", amount: -6069 },
       { type: "증정 이벤트: ", amount: -25000 },
     ];
+
     // when
     const result = totalDiscount(0, discount);
     
@@ -52,6 +55,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "주말 할인: ", amount: -10115 },
       { type: "증정 이벤트: ", amount: -25000 },
     ];
+
     // when
     const result = totalDiscount(0, discount);
     
@@ -67,6 +71,7 @@ describe("TotalDiscount 기능 테스트", () => {
       { type: "특별 할인: ", amount: -1000 },
       { type: "증정 이벤트: ", amount: -25000 },
     ];
+    
     // when
     const result = totalDiscount(0, discount);
     
