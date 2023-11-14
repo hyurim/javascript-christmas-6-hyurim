@@ -11,15 +11,10 @@ const { zero } = NUMBERS;
  * @param {Array} quantities - 주문된 음식 수량
  * @returns {number} - 할인 전 총 주문 가격
  */
-const preDiscountAmount = (menuNames, quantities) => {
-  const orderedFoods = menuNames.map((menu, index) => {
-    const menuItem = MENU.find((food) => food.menu === menu) || { price: zero };
-    const quantity = parseInt(quantities?.[index], 10) || zero;
-    const price = menuItem.price;
-    return { menu, quantity, price };
-  });
+ const preDiscountAmount = (menuNames, quantities) => {
+  const orderedFoodList = orderedFoods(menuNames, quantities);
 
-  const totalAmount = orderedFoods.reduce((total, food) => {
+  const totalAmount = orderedFoodList.reduce((total, food) => {
     return total + food.price * food.quantity;
   }, zero);
 
@@ -28,6 +23,21 @@ const preDiscountAmount = (menuNames, quantities) => {
   return totalAmount;
 };
 
+/**
+ * 주문한 메뉴 이름과 수량을 바탕으로 주문된 음식 목록을 생성함.
+ * 
+ * @param {Array} menuNames - 주문된 음식 목록
+ * @param {Array} quantities - 주문된 음식 수량
+ * @returns {Array<{ menu: string, quantity: number, price: number }>} - 주문된 음식 목록
+ */
+const orderedFoods = (menuNames, quantities) => {
+  return menuNames.map((menu, index) => {
+    const menuItem = MENU.find((food) => food.menu === menu) || { price: zero };
+    const quantity = parseInt(quantities?.[index], 10) || zero;
+    const price = menuItem.price;
+    return { menu, quantity, price };
+  });
+};
 /**
  * 할인 전 총 주문 가격을 출력함.
  * 
