@@ -9,7 +9,7 @@ const { order_menu } = PROMPT;
  * 입력받은 음식 정보를 가공하여 주문 목록을 반환함.
  * 
  * @param {string} food - 음식 정보 문자열
- * @returns {Object} - 가공된 주문 목록 객체
+ * @returns {{ menuNames: Array<string>, quantities: Array<number> }} - 추출된 음식 이름과 수량
  * @property {Array} menuNames - 음식 목록
  * @property {Array} quantities - 수량 목록
  */
