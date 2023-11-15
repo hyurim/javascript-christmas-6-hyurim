@@ -1,5 +1,12 @@
+/**
+ * @fileoverview preDiscountAmount 기능에 대한 테스트 파일
+ * @module PreDiscountAmountTest
+ */
 import preDiscountAmount from "../../src/domain/preDiscountAmount.js";
 
+/**
+ * preDiscountAmount 함수에 대한 테스트 수트
+ */
 describe("preDiscountAmount 기능 테스트", () => {
   test("테스트 케이스 1: 메뉴와 수량이 주어졌을 때 정확한 총 주문 금액이 계산 되어야 함", () => {
     // given

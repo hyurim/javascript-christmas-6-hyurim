@@ -1,7 +1,17 @@
+/**
+ * @fileoverview 전체 기능에 대한 테스트 파일
+ * @module AppTest
+ */
 import App from "../src/App.js";
 import { Console } from "@woowacourse/mission-utils";
 import { EOL as LINE_SEPARATOR } from "os";
 
+/**
+ * 주어진 입력값으로 Console.readLineAsync를 모킹하는 함수
+ *
+ * @param {string[]} inputs - 모킹할 입력값 배열
+ * @return {void}
+ */
 const mockQuestions = (inputs) => {
   Console.readLineAsync = jest.fn();
 
@@ -12,6 +22,11 @@ const mockQuestions = (inputs) => {
   });
 };
 
+/**
+ * Console.print에 대한 spy를 얻는 함수
+ *
+ * @return {jest.SpyInstance<void, any>}
+ */
 const getLogSpy = () => {
   const logSpy = jest.spyOn(Console, "print");
   logSpy.mockClear();
@@ -19,16 +34,32 @@ const getLogSpy = () => {
   return logSpy;
 };
 
+/**
+ * logSpy를 이용하여 출력된 로그를 문자열로 반환하는 함수
+ *
+ * @param {jest.SpyInstance<void, any>} logSpy - Console.print에 대한 spy
+ * @return {string} 출력된 로그 문자열
+ */
 const getOutput = (logSpy) => {
   return [...logSpy.mock.calls].join(LINE_SEPARATOR);
 };
 
+/**
+ * 출력된 로그가 특정 로그를 포함하는지 검증하는 함수
+ *
+ * @param {string} received - 출력된 로그 문자열
+ * @param {string[]} expectedLogs - 포함 여부를 검증할 로그들의 배열
+ * @return {void}
+ */
 const expectLogContains = (received, expectedLogs) => {
   expectedLogs.forEach((log) => {
     expect(received).toContain(log);
   });
 };
 
+/**
+ * 전체 기능에 대한 테스트 수트
+ */
 describe("전체 기능 테스트", () => {
   test("정상 출력 테스트", async () => {
     //given

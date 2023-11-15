@@ -1,3 +1,7 @@
+/**
+ * @fileoverview 메뉴 입력 유효성 검사에 대한 테스트 파일
+ * @module FoodValidationTest
+ */
 import ERROR from "../../src/constants/error";
 import foodIsValid from "../../src/utils/foodIsValid";
 

@@ -1,12 +1,24 @@
+/**
+ * @fileoverview 날짜 입력 유효성 검사에 대한 테스트 파일
+ * @module DateValidationTest
+ */
 import dateIsValid from "../../src/utils/dateIsValid.js";
 import ERROR from "../../src/constants/error.js";
 
 const { prefix, invalid_date_error_message } = ERROR;
+/**
+ * 유효하지 않은 날짜 에러를 검증하는 함수
+ * @param {string} input - 검증할 날짜 값
+ */
 const expectInValidDateError = (input) => {
   expect(() => dateIsValid(input)).toThrow(
     `${prefix} ${invalid_date_error_message}`
   );
 };
+
+/**
+ * 날짜 입력에 대한 테스트 수트
+ */
 describe("날짜 입력 테스트", () => {
   test("정상 입력", async () => {
     // given

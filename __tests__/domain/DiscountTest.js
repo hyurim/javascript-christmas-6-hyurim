@@ -1,7 +1,16 @@
+/**
+ * @fileoverview Discount 기능에 대한 테스트 파일
+ * @module DiscountTest
+ */
 import Discount from "../../src/domain/Discount.js";
 import orderMenu from "../../src/domain/orderMenu.js";
 import preDiscountAmount from "../../src/domain/preDiscountAmount";
 
+/**
+ * 주어진 음식에 대한 메뉴와 총 가격을 반환하는 함수
+ * @param {string} food - 주문할 음식의 목록
+ * @returns {{menu: Object, totalPrice: number}} 주문한 음식의 메뉴와 총 가격
+ */
 const getMenuAndTotalPrice = (food) => {
   const menu = orderMenu(food);
   const totalPrice = preDiscountAmount(menu.menuNames, menu.quantities);
@@ -9,11 +18,25 @@ const getMenuAndTotalPrice = (food) => {
   return { menu, totalPrice };
 };
 
+/**
+ * Discount 기능에 대한 테스트 수트
+ */
 describe("Discount 기능 테스트", () => {
   let discount;
+  /**
+   * 모든 테스트 케이스 실행 전에 Discount 객체를 초기화하는 함수
+   */
   beforeAll(() => {
     discount = new Discount();
   });
+
+  /**
+   * 여러 테스트 케이스에 대한 테스트를 수행하는 함수
+   * @param {string} description - 테스트 케이스에 대한 설명
+   * @param {string} date - 할인을 받을 날짜
+   * @param {string} food - 주문한 음식의 목록
+   * @param {Array} expected - 예상되는 할인 목록
+   */
   test.each([
     [
       "크리스마스일 때 평일 할인(디저트 1개)), 특별 할인",

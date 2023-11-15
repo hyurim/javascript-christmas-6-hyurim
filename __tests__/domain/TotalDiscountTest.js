@@ -1,5 +1,12 @@
+/**
+ * @fileoverview TotalDiscount 기능에 대한 테스트 파일
+ * @module TotalDiscountTest
+ */
 import totalDiscount from "../../src/domain/totalDiscount.js";
 
+/**
+ * TotalDiscount 함수에 대한 테스트 수트
+ */
 describe("TotalDiscount 기능 테스트", () => {
   test("테스트 케이스 1: 크리스마스일 때 평일 할인(디저트 1개)), 특별 할인, 증정 이벤트의 총 합", () => {
     // given

@@ -1,17 +1,28 @@
+/**
+ * @fileoverview badge 기능에 대한 테스트 파일
+ * @module badgeTest
+ */
 import { Console } from "@woowacourse/mission-utils";
 import badge from "../../src/domain/badge.js";
 
-
+/**
+ * Console 모듈에서 print 메서드의 spyOn을 생성하여 반환하는 함수
+ * @returns {jest.SpyInstance} Console.print의 spyOn
+ */
 const getLogSpy = () => {
   const logSpy = jest.spyOn(Console, "print");
   logSpy.mockClear();
 
   return logSpy;
 };
-
+/**
+ * badge 기능에 대한 테스트 수트
+ */
 describe("badge 기능 테스트", () => {
   let logSpy;
-
+  /**
+   * 각 테스트 케이스 실행 전에 logSpy를 초기화하는 함수
+   */
   beforeEach(() => {
     logSpy = getLogSpy();
   });
