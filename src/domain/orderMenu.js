@@ -31,7 +31,7 @@ const orderMenu = (food) => {
 const orderMenuOutput = (menuNames, quantities) => {
   OutputView.print(order_menu);
   menuNames.map((name, index) => {
-    const quantity = quantities ? quantities[index] : `${zero}`;
+    const quantity = quantities[index];
     OutputView.menu(name, quantity);
   });
 };

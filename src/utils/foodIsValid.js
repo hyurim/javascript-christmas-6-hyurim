@@ -23,7 +23,6 @@ const foodIsValid = (order) => {
   validateMenu(menuNames);
   validateOrderQuantity(quantities);
   validateZeroInclude(quantities);
-  validateNumbers(quantities);
 
   return true;
 };
@@ -126,18 +125,6 @@ const validateOrderQuantity = (quantities) => {
  */
 const validateZeroInclude = (quantities) => {
   if (quantities.includes(`${zero}`)) {
-    throw new InputError(invalid_order_error_message);
-  }
-};
-
-/**
- * 수량이 숫자로만 이루어져 있는지 검사함.
- * 
- * @param {string[]} quantities - 주문한 수량 배열
- * @throws {InputError} - 수량이 숫자로만 구성되어 있지 않은 경우 발생하는 예외
- */
-const validateNumbers = (quantities) => {
-  if (!quantities.every((value) => value.trim() !== blank && Number.isInteger(Number(value)))) {
     throw new InputError(invalid_order_error_message);
   }
 };

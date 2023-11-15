@@ -31,8 +31,8 @@ const preDiscountAmount = (menuNames, quantities) => {
  */
 const orderedFoods = (menuNames, quantities) => {
   return menuNames.map((menu, index) => {
-    const menuItem = MENU.find((food) => food.menu === menu) || { price: zero };
-    const quantity = parseInt(quantities?.[index], 10) || zero;
+    const menuItem = MENU.find((food) => food.menu === menu);
+    const quantity = parseInt(quantities[index], 10);
     const price = menuItem.price;
     return { menu, quantity, price };
   });
