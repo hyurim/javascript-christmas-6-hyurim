@@ -24,14 +24,12 @@ class Discount {
   discountPrice(menu, date, totalPrice) {
     const day = this.#getDayOfWeek(date);
     const christmas = this.#ChristmasDday(date);
-    const week =
-      day <= 5 ? this.#week(menu, DESSERT_MENU) : this.#week(menu, MAIN_MENU);
+    const week = day <= 5 ? this.#week(menu, DESSERT_MENU) : this.#week(menu, MAIN_MENU);
     const special = this.#special(day, date);
     const discounts = this.#eachDiscount(christmas, week, special, totalPrice, day);
     const finalDiscount = discounts !== undefined ? discounts : [];
 
     this.#discountOutput(finalDiscount);
-
     return finalDiscount;
   }
 

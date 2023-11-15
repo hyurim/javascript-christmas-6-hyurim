@@ -17,7 +17,6 @@ const { invalid_order_error_message } = ERROR;
  */
 const foodIsValid = (order) => {
   const { menuNames, quantities, orderMenu } = parseOrder(order);
-
   validateMultipleOrders(orderMenu);
   validateDuplication(menuNames);
   validateOnlyDrink(menuNames);

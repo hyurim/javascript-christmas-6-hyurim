@@ -18,7 +18,6 @@ const orderMenu = (food) => {
   const quantities = food.match(/\d+/g);
 
   orderMenuOutput(menuNames, quantities);
-
   return { menuNames, quantities };
 };
 

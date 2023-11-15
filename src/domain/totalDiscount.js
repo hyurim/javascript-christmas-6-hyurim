@@ -11,10 +11,8 @@ const { zero, presentAmount, champagne } = NUMBERS;
  * @returns {number} - 홍 할인 금액
  */
 const totalDiscount = (totalPrice, discount) => {
-
   const total = discount.map((cost) => cost.amount)
     .reduce((total, discount) => total + discount, zero);
-
     totalDiscountOutput(totalPrice, total);
 
   return total;

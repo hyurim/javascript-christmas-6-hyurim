@@ -13,7 +13,6 @@ const { zero } = NUMBERS;
  */
 const preDiscountAmount = (menuNames, quantities) => {
   const orderedFoodList = orderedFoods(menuNames, quantities);
-
   const totalAmount = orderedFoodList.reduce((total, food) => {
     return total + food.price * food.quantity;
   }, zero);
