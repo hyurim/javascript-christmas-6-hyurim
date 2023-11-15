@@ -19,8 +19,11 @@ const expectInValidOrderError = (inputs) => {
   );
 };
 
+/**
+ * 메뉴 입력에 대한 테스트 수트
+ */
 describe("메뉴 입력 테스트", () => {
-  test("정상 구현", () => {
+  test("정상적인 입력", () => {
     // given
     const inputs = "시저샐러드-1,티본스테이크-1,아이스크림-1,제로콜라-1";
     
